@@ -6,23 +6,23 @@
   <body>
     <h1>Маркированный список</h1>
     <ul>
-    <li><a href="http://kubsu.ru/">абсолютную гиперссылку на главную страницу сайта kubsu.ru</a></li>
-    <li><a href="https://kubsu.ru/">абсолютную гиперссылку на главную страницу сайта kubsu.ru</a></li>
+    <li><a href="http://kubsu.ru/">абсолютная гиперссылка на главную страницу сайта kubsu.ru</a></li>
+    <li><a href="https://kubsu.ru/">абсолютная гиперссылка на главную страницу сайта kubsu.ru</a></li>
     <li><a href="https://kubsu.ru/">
       <img src="image.jpg" alt="Цветок" style="width: 512px;">
       </a>
     </li>
     <li><a href="/inside.html">Сокращённая ссылка на внутреннюю страницу</a></li>
     <li><a href="/">Сокращённая ссылка на главную страницу</a></li>
-    <li><a href="#Bottom"> ссылку на фрагмент текущей страницы(Вниз)</a></li>
-    <li><a href="https://example.com/search?category=books&sort=price&availability=in_stock">ссылку с тремя параметрами в URL</a> </li>
-    <li><a href="https://moodle.kubsu.ru/mod/assign/view.php?id=16911">ссылку с параметром id в URL</a> </li>
-    <li><a href="/putnik.html">относительную на страницу в текущем каталоге</a> </li>
-    <li><a href="/about/putnik.html"> относительную на страницу в каталоге about</a></li>
-    <li><a href="../putnik.html">относительную на страницу в каталоге уровнем выше текущего</a> </li>
-    <li><a href="../../putnik.html"> относительную на страницу в каталоге двумя уровнями выше</a></li>
+    <li><a href="#Bottom"> ссылка на фрагмент текущей страницы(Вниз)</a></li>
+    <li><a href="https://example.com/search?category=books&sort=price&availability=in_stock">ссылка с тремя параметрами в URL</a> </li>
+    <li><a href="https://moodle.kubsu.ru/mod/assign/view.php?id=16911">ссылка с параметром id в URL</a> </li>
+    <li><a href="/putnik.html">относительная ссылка на страницу в текущем каталоге</a> </li>
+    <li><a href="/about/putnik.html"> относительная ссылка на страницу в каталоге about</a></li>
+    <li><a href="../putnik.html">относительная ссылка на страницу в каталоге уровнем выше текущего</a> </li>
+    <li><a href="../../putnik.html"> относительная ссылка на страницу в каталоге двумя уровнями выше</a></li>
     <li><p><a href="https://putnik.com">Контекстная ссылка</a> в тексте абзаца</p></li>
-    <li><a href="https://ru.wikipedia.org/wiki/The_International#The_International_2014">ссылку на фрагмент страницы стороннего сайта</a> </li>
+    <li><a href="https://ru.wikipedia.org/wiki/The_International#The_International_2014">ссылка на фрагмент страницы стороннего сайта</a> </li>
     <li><p>Ссылки из прямоугольных и круглых областей картинки</p>
       <img src="image.jpg" alt="Ссылки" style="width: 512px;" usemap="#map1">
       <map name=map1>
@@ -30,10 +30,10 @@
         <area shape="circle" coords="384,192,128" href="https://ru.wikipedia.org/wiki/The_International#The_International_2014" alt="Int">
       </map>
     </li>
-    <li><a href=""> ссылку с пустым href</a></li>
-    <li><a> ссылку без href</a></li>
+    <li><a href=""> ссылка с пустым href</a></li>
+    <li><a> ссылка без href</a></li>
     <li><a href="https://www.w3.org/standards/" rel="nofollow">Ссылка, по которой запрещён переход поисковикам</a></li>
-    <li><!--<noindex>--><a href="https://www.wildberries.ru/"> запрещенную для индексации поисковиками;</a><!--</noindex>--></li>
+    <li><!--<noindex>--><a href="https://www.wildberries.ru/"> запрещенная для индексации поисковиками ссылка;</a><!--</noindex>--></li>
       <li><p>Нумерованный список ссылок с подписями title</p>
             <ol>
               <li><a href="https://ru.wikipedia.org/wiki/Заглавная_страница" title="Подпись один">Первая ссылка</a></li>
@@ -41,9 +41,70 @@
               <li><a href="https://ru.wikipedia.org/wiki/Италия" title="Подпись три">Третья ссылка</a></li>
             </ol>
           </li>
-    <li><a href="ftp://username:password@example.com/path/to/file"> ссылку на файл на сервере FTP с авторизацией</a></li>
-
+    <li><a href="ftp://username:password@example.com/path/to/file"> ссылка на файл на сервере FTP с авторизацией</a></li>
     </ul>
+<h2 id="fragment">Форма</h2>
+    <form action="/form-submitted.html" method ="POST">
+      
+      <label>
+        ФИО:<br>
+        <input type="text" name="Names" placeholder="Введите ФИО" required>
+      </label><br>
 
+      <label>
+        Номер телефона:<br>
+        <input type="tel" name="Phone" placeholder="+7(000)000-00-00" required>
+      </label><br>
+
+      <label>
+        E-mail:<br>
+        <input type="email" name="Email" placeholder="example@mail.ru" required>
+      </label><br>
+
+      <label>
+        Дата рождения:<br>
+        <input name="field-date" type="date" required>
+      </label><br>
+
+      Пол:<br>
+      <label>
+        <input type="radio" checked="checked" name="gender" value="male" required>Мужской
+      </label>
+      <label>
+        <input type="radio" name="gender" value="female" required>Женский
+      </label><br>
+
+      <label>
+        Любимый язык программирования:<br>
+        <select name="name-2[]" multiple="multiple" required>
+          <option value="item1">Pascal</option>
+          <option value="item2">C</option>
+          <option value="item3">C++</option>
+          <option value="item4">JavaScript</option>
+          <option value="item5">PHP</option>
+          <option value="item6">Python</option>
+          <option value="item7">Java</option>
+          <option value="item8">Haskel</option>
+          <option value="item9">Clojure</option>
+          <option value="item10">Prolog</option>
+          <option value="item11">Scala</option>
+        </select><br>
+      </label>
+
+      <label>
+        Биография:<br>
+        <textarea name="name-3" placeholder="Информация о вас" required>
+        </textarea>
+      </label><br>
+
+      <label>
+        <input type="checkbox" checked="checked" name="check-1" required>С контрактом ознакомлен(а)
+      </label><br>
+
+      <input type="submit" value="Сохранить">
+    </form>
+            
+  </body>
+</html>
     <a id="Bottom"></a>
   </body>
