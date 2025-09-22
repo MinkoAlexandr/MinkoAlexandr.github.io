@@ -83,5 +83,6 @@ tr:nth-child(odd) {
 }
 
 .pic{
-    weight: 512px
+    width: 512px
 }
+
