@@ -79,4 +79,9 @@ tr:nth-child(even) {
 
 tr:nth-child(odd) {
     background-color: #fff;
+
+}
+
+.pic{
+    weight: 512px
 }
