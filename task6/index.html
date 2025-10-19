@@ -11,43 +11,75 @@
     <header class="bg-warning">
         <div class="container-fluid d-flex">
             <div class="fw-bold px-5 py-3 w-100 text-center">
-                <h2>Калькулятор</h2>
+                <h2>Калькулятор стоимости услуг</h2>
             </div>
         </div>
     </header>
 
-    <div class="container my-5">
-        <div class="row">
-            <div class="col-md-6 offset-md-3">
-                <div class="card shadow">
-                    <form class="mx-2 my-2">
-                        <div class="mb-3">
-                            <div class="px-5 py-1 text-center">
-                                <h3>Выберите товар из списка</h3>
+
+    <div class="container-fluid d-flex justify-content-center align-items-center">
+        <div class="col-12 col-lg-6 row justify-content-center py-5 my-4">
+            <div class="card shadow">
+                <form class="mx-2 my-2">
+                    <div class="mb-3">
+                        <div class="px-5 py-1 text-center">
+                            <h3>Выберите услугу</h3>
+                        </div>
+                        <div class="mb-3 d-flex justify-content-around" id="typeSelect">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="serviceType" id="type1" value="10000">
+                                <label class="form-check-label" for="type1">Чистка ковра – 10000 ₽</label>
                             </div>
-                            <select id="good" class=" form-control">
-                                <option value="4700">Heart of Tarasque - 4700</option>
-                                <option value="6000">Divine rapier - 6000</option>
-                                <option value="7700">Dagon - 7700</option>
-                                <option value="850">Ring of Tarasque - 850</option>
-                                <option value="90">Tango - 90</option>
-                                <option value="50">clarity - 50</option>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="serviceType" id="type2" value="1000">
+                                <label class="form-check-label" for="type2">Химчистка одежды – 1000 ₽</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="serviceType" id="type3" value="3500">
+                                <label class="form-check-label" for="type3">Чистка сплит-системы – 3500 ₽</label>
+                            </div>
+                        </div>
+                        <div id="optionSelect" class="d-none mt-3 w-100">
+                            <h5 class="card-title mt-3 px-2 pt-2">Выберите опцию</h5>
+                            <select id="SplitOption" class="form-select">
+                                <option value="0">Рубашка + 0 ₽</option>
+                                <option value="500">Брюки + 500 ₽</option>
+                                <option value="1000">Костюм + 1000 ₽</option>
                             </select>
+                        </div>
+                        <div id="checkSelect" class="d-none mt-3 w-100">
+                            <h5 class="card-title mt-3 px-2 pt-2">Добавьте услуги</h5>
+                            <div class="d-flex justify-content-around" id="SplitCheck">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="freon" value="400">
+                                    <label class="form-check-label" for="freon">Заправить фреон + 400 ₽</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input " type="checkbox" id="diagnosis" value="1000">
+                                    <label class="form-check-label " for="diagnosis">Диагностика системы + 1000
+                                        ₽</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input " type="checkbox" id="vacuum" value="1500">
+                                    <label class="form-check-label " for="vacuum">Вакуумирование системы + 1500
+                                        ₽</label>
+                                </div>
+                            </div>
                         </div>
                         <div class="px-5 py-1 text-center">
                             <h3>Укажите количество товара</h3>
                         </div>
                         <input type="text" pattern="[0-9]+" id="quantity" class=" form-control" required>
-                        <button type="button" id="calcButton"
-                            class="btn btn-primary w-100 mt-3 px-2 pt-2">Рассчитать</button>
-                    </form>
-                    <div class="mx-2 my-4">
-                    <div id="result" class="alert mt-3 w-100 text-center"></div>
+                        
                     </div>
+                </form>
+                <div class="mx-2 my-4">
+                    <div id="result" class="alert mt-3 w-100 text-center"></div>
                 </div>
             </div>
         </div>
     </div>
+
 
     <script src="script.js" defer></script>
 
