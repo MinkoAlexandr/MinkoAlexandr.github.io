@@ -1,0 +1,42 @@
+.bg-blue{
+    background-color: #084298;
+}
+
+#gallery img{
+  width: 100%;
+  aspect-ratio: 3 / 4; /* квадрат */
+  object-fit: cover;
+}
+
+.slick-arrow::before{
+    font-size:50px;
+    color: #e2a008;
+}
+
+.slick-prev {
+  left: -70px;  /* отступ влево от галереи */
+}
+
+.slick-next {
+  right: -45px; /* отступ вправо от галереи */
+}
+
+.slick-dots li button::before{
+    font-size: 14px;
+    color: white; /* активные точки */
+
+}
+
+.slick-dots li.slick-active button:before{
+    font-size:14px;
+    color: #e2a008;
+}
+
+@media screen and (min-width:1024px){
+#gallery img{
+    width:400px;
+    height:500px;
+    object-fit:cover;
+    }
+
+}
