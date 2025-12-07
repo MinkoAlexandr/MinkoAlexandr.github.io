@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ювелирный магазин "Сказка"</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: #333;
+            background-color: #fefefe;
+        }
+
+        /* Шапка сайта */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            padding: 15px 0;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: #d4af37;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: #a67c52;
+        }
+
+        /* Навигация */
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            position: relative;
+            margin-left: 25px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            font-size: 16px;
+            padding: 8px 12px;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #d4af37;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #fff;
+            min-width: 160px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            z-index: 1;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .dropdown-content a {
+            display: block;
+            padding: 12px 16px;
+            border-bottom: 1px solid #f1f1f1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .contact-btn {
+            background-color: #d4af37;
+            color: white;
+            border-radius: 30px;
+            padding: 10px 25px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .contact-btn:hover {
+            background-color: #c19b2e;
+            transform: translateY(-2px);
+        }
+
+        /* Видео-секция */
+        .video-section {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        .video-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .video-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 1;
+        }
+
+        .video-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .video-title {
+            font-size: 72px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+            color: #f8f8f8;
+        }
+
+        .video-subtitle {
+            font-size: 22px;
+            margin-bottom: 40px;
+            color: #f0f0f0;
+        }
+
+        .contact-form-btn {
+            display: inline-block;
+            background-color: #d4af37;
+            color: white;
+            padding: 15px 35px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 18px;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .contact-form-btn:hover {
+            background-color: #c19b2e;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Основные секции */
+        section {
+            padding: 80px 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 50px;
+            color: #333;
+            position: relative;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 3px;
+            background-color: #d4af37;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* Галерея */
+        .gallery-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .gallery-slider {
+            display: flex;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none; /* IE и Edge */
+        }
+
+        .gallery-slider::-webkit-scrollbar {
+            display: none; /* Chrome, Safari, Opera */
+        }
+
+        .gallery-slide {
+            min-width: 300px;
+            height: 400px;
+            margin-right: 20px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            flex-shrink: 0;
+        }
+
+        .gallery-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .gallery-slide:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-controls {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .gallery-btn {
+            background-color: #d4af37;
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 20px;
+            margin: 0 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .gallery-btn:hover {
+            background-color: #c19b2e;
+            transform: scale(1.1);
+        }
+
+        /* О нас */
+        .about-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .about-text {
+            font-size: 18px;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            text-align: justify;
+        }
+
+        .contact-person {
+            font-weight: 600;
+            color: #d4af37;
+            font-size: 20px;
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        /* Разделы с изделиями */
+        .products-section {
+            background-color: #f9f9f9;
+        }
+
+        .products-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .category-title {
+            font-size: 30px;
+            margin: 60px 0 30px;
+            color: #333;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #d4af37;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 80px;
+        }
+
+        .product-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-img {
+            height: 250px;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-name {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .product-price {
+            font-size: 22px;
+            color: #d4af37;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .buy-btn {
+            display: block;
+            width: 100%;
+            background-color: #d4af37;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 5px;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .buy-btn:hover {
+            background-color: #c19b2e;
+        }
+
+        /* Подвал */
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 50px 20px 30px;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+
+        .footer-logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: #d4af37;
+            margin-bottom: 15px;
+        }
+
+        .footer-info h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: #f0f0f0;
+        }
+
+        .footer-info p {
+            margin-bottom: 10px;
+            color: #ccc;
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            color: #aaa;
+            font-size: 14px;
+        }
+
+        /* Модальное окно контактов */
+        .contacts-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
+            animation: modalAppear 0.8s ease-out;
+        }
+
+        @keyframes modalAppear {
+            0% {
+                opacity: 0;
+                transform: translateX(-50px) translateY(-50px) scale(0.3);
+            }
+            70% {
+                transform: translateX(0) translateY(0) scale(1.05);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .modal-title {
+            font-size: 28px;
+            color: #333;
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 30px;
+            color: #999;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .close-modal:hover {
+            color: #d4af37;
+        }
+
+        .contact-info {
+            font-size: 18px;
+            line-height: 1.8;
+        }
+
+        .contact-info div {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-info i {
+            width: 30px;
+            color: #d4af37;
+            font-size: 20px;
+        }
+
+        /* Модальное окно формы */
+        .form-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .form-content {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
+            animation: formAppear 0.5s ease-out;
+        }
+
+        @keyframes formAppear {
+            0% {
+                opacity: 0;
+                transform: scale(0.7);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .checkbox-group input {
+            width: auto;
+            margin-right: 10px;
+            margin-top: 5px;
+        }
+
+        .checkbox-group label {
+            font-size: 14px;
+        }
+
+        .submit-btn {
+            display: block;
+            width: 100%;
+            background-color: #d4af37;
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 5px;
+            font-weight: 600;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 20px;
+        }
+
+        .submit-btn:hover {
+            background-color: #c19b2e;
+        }
+
+        .form-message {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 5px;
+            display: none;
+        }
+
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                padding: 10px;
+            }
+
+            nav ul {
+                margin-top: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            nav ul li {
+                margin: 5px 10px;
+            }
+
+            .video-title {
+                font-size: 48px;
+            }
+
+            .video-subtitle {
+                font-size: 18px;
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+
+            .gallery-slide {
+                min-width: 250px;
+                height: 350px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .video-title {
+                font-size: 36px;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+
+            .gallery-slide {
+                min-width: 200px;
+                height: 280px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Шапка сайта -->
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo">Ювелирный магазин <span>Сказка</span></a>
+            <nav>
+                <ul>
+                    <li><a href="#home">Главная</a></li>
+                    <li class="dropdown">
+                        <a href="#products">Изделия <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-content">
+                            <a href="#rings">Кольца</a>
+                            <a href="#necklaces">Колье</a>
+                            <a href="#earrings">Серьги</a>
+                        </div>
+                    </li>
+                    <li><a href="#about">О нас</a></li>
+                    <li><button class="contact-btn" id="openContacts">Контакты</button></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Видео секция -->
+    <section class="video-section" id="home">
+        <div class="video-container">
+            <video autoplay muted loop>
+                <source src="video.mp4" type="video/mp4">
+                Ваш браузер не поддерживает видео.
+            </video>
+            <div class="video-overlay"></div>
+        </div>
+        <div class="video-content">
+            <h1 class="video-title">Сказка</h1>
+            <p class="video-subtitle">Искусство, застывшее в золоте и бриллиантах. Ювелирные изделия, созданные чтобы подчеркнуть вашу индивидуальность.</p>
+            <button class="contact-form-btn" id="openForm">Связь с нами</button>
+        </div>
+    </section>
+
+    <!-- Галерея -->
+    <section id="gallery">
+        <h2 class="section-title">Наши изделия</h2>
+        <div class="gallery-container">
+            <div class="gallery-slider" id="gallerySlider">
+                <div class="gallery-slide">
+                    <img src="ring with bril.jpg" alt="Кольцо с бриллиантом">
+                </div>
+                <div class="gallery-slide">
+                    <img src="colie.jpeg" alt="Колье">
+                </div>
+                <div class="gallery-slide">
+                    <img src="sergi with bril.jpeg" alt="Серьги с бриллиантами">
+                </div>
+                <div class="gallery-slide">
+                    <img src="golden_ring.jpeg" alt="Золотое кольцо">
+                </div>
+                <div class="gallery-slide">
+                    <img src="silver_ring.jpg" alt="Серебряное колье">
+                </div>
+                <div class="gallery-slide">
+                    <img src="sergi_podveski.jpeg" alt="Серьги-подвески">
+                </div>
+            </div>
+            <div class="gallery-controls">
+                <button class="gallery-btn" id="prevBtn"><i class="fas fa-chevron-left"></i></button>
+                <button class="gallery-btn" id="nextBtn"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- О нас -->
+    <section id="about">
+        <h2 class="section-title">О нас</h2>
+        <div class="about-container">
+            <p class="about-text">
+                Ювелирный магазин "Сказка" - это место, где рождаются истории, воплощенные в драгоценных металлах и камнях. 
+                Наша история началась более 15 лет назад с небольшой мастерской, где создавались уникальные украшения на заказ. 
+                Сегодня "Сказка" - это известный бренд, который сочетает в себе традиции ювелирного искусства и современные тенденции.
+            </p>
+            <p class="about-text">
+                Мы тщательно отбираем материалы для наших изделий: используем только сертифицированные драгоценные камни 
+                и благородные металлы высшей пробы. Каждое украшение создается с любовью и вниманием к деталям, 
+                чтобы оно радовало вас долгие годы и передавалось из поколения в поколение.
+            </p>
+            <p class="about-text">
+                В нашем ассортименте вы найдете как классические модели, так и эксклюзивные дизайнерские украшения. 
+                Мы сотрудничаем с талантливыми ювелирами, которые воплощают самые смелые идеи в жизнь.
+            </p>
+            <p class="contact-person">Контактное лицо: Минко А.А.</p>
+        </div>
+    </section>
+
+    <!-- Разделы с изделиями -->
+    <section class="products-section" id="products">
+        <div class="products-container">
+            <!-- Кольца -->
+            <h3 class="category-title" id="rings">Кольца</h3>
+            <div class="products-grid">
+                <div class="product-card">
+                    <img src="r_b.jpg" alt="Кольцо с бриллиантом" class="product-img">
+                    <div class="product-info">
+                        <h4 class="product-name">Кольцо с бриллиантом</h4>
+                        <p class="product-price">45 000 ₽</p>
+                        <button class="buy-btn">Купить</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="gr_sap.jpg" alt="Золотое кольцо" class="product-img">
+                    <div class="product-info">
+                        <h4 class="product-name">Золотое кольцо с сапфиром</h4>
+                        <p class="product-price">32 500 ₽</p>
+                        <button class="buy-btn">Купить</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="sr_f.jpg" alt="Серебряное кольцо" class="product-img">
+                    <div class="product-info">
+                        <h4 class="product-name">Серебряное кольцо с фианитом</h4>
+                        <p class="product-price">12 800 ₽</p>
+                        <button class="buy-btn">Купить</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Колье -->
+            <h3 class="category-title" id="necklaces">Колье</h3>
+            <div class="products-grid">
+                <div class="product-card">
+                    <img src="k_b.jpg" alt="Колье с бриллиантами" class="product-img">
+                    <div class="product-info">
+                        <h4 class="product-name">Колье с бриллиантами</h4>
+                        <p class="product-price">89 000 ₽</p>
+                        <button class="buy-btn">Купить</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="k_gh.jpg" alt="Золотое колье" class="product-img">
+                    <div class="product-info">
+                        <h4 class="product-name">Золотое колье с жемчугом</h4>
+                        <p class="product-price">67 500 ₽</p>
+                        <button class="buy-btn">Купить</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="k_t.jpg" alt="Серебряное колье" class="product-img">
+                    <div class="product-info">
+                        <h4 class="product-name">Серебряное колье с топазом</h4>
+                        <p class="product-price">28 900 ₽</p>
+                        <button class="buy-btn">Купить</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Серьги -->
+            <h3 class="category-title" id="earrings">Серьги</h3>
+            <div class="products-grid">
+                <div class="product-card">
+                    <img src="s_b.jpg" alt="Серьги с бриллиантами" class="product-img">
+                    <div class="product-info">
+                        <h4 class="product-name">Серьги с бриллиантами</h4>
+                        <p class="product-price">56 000 ₽</p>
+                        <button class="buy-btn">Купить</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="ss_e.jpg" alt="Золотые серьги" class="product-img">
+                    <div class="product-info">
+                        <h4 class="product-name">Золотые серьги с изумрудом</h4>
+                        <p class="product-price">42 300 ₽</p>
+                        <button class="buy-btn">Купить</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="s_r.jpg" alt="Серьги-гвоздики" class="product-img">
+                    <div class="product-info">
+                        <h4 class="product-name">Серьги-гвоздики с рубином</h4>
+                        <p class="product-price">18 700 ₽</p>
+                        <button class="buy-btn">Купить</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Подвал -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-info">
+                <div class="footer-logo">Сказка</div>
+                <p>Ювелирные изделия, которые рассказывают вашу историю</p>
+            </div>
+            <div class="footer-info">
+                <h3>Контакты</h3>
+                <p><i class="fas fa-phone"></i> +7 (XXX) XXX-XX-XX</p>
+                <p><i class="fas fa-envelope"></i> info@skazka-jewelry.ru</p>
+                <p><i class="fas fa-user"></i> Контактное лицо: Минко А.А.</p>
+            </div>
+            <div class="footer-info">
+                <h3>Адрес и время работы</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Улица Адресная 100</p>
+                <p><i class="fas fa-clock"></i> Пн-Вс: 9:00 - 21:00</p>
+                <p>Без выходных и перерывов</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 Ювелирный магазин "Сказка".</p>
+        </div>
+    </footer>
+
+    <!-- Модальное окно контактов -->
+    <div class="contacts-modal" id="contactsModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Контакты</h2>
+                <button class="close-modal" id="closeContacts">&times;</button>
+            </div>
+            <div class="contact-info">
+                <div><i class="fas fa-phone"></i> Телефон: +7 (XXX) XXX-XX-XX</div>
+                <div><i class="fas fa-envelope"></i> Email: info@skazka-jewelry.ru</div>
+                <div><i class="fas fa-map-marker-alt"></i> Адрес: Улица Адресная 100</div>
+                <div><i class="fas fa-user"></i> Контактное лицо: Минко А.А.</div>
+                <div><i class="fas fa-clock"></i> Время работы: ежедневно с 9:00 до 21:00</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно формы -->
+    <div class="form-modal" id="formModal">
+        <div class="form-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Связь с нами</h2>
+                <button class="close-modal" id="closeForm">&times;</button>
+            </div>
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="fullName">ФИО *</label>
+                    <input type="text" id="fullName" name="fullName" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Телефон *</label>
+                    <input type="tel" pattern="\+?[0-9\s\-\(\)]+" id="phone" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Сообщение</label>
+                    <textarea id="message" name="message" placeholder="Опишите ваш вопрос или пожелание..."></textarea>
+                </div>
+                <div class="form-group checkbox-group">
+                    <input type="checkbox" id="privacy" name="privacy" required>
+                    <label for="privacy">Согласен(а) на обработку персональных данных</label>
+                </div>
+                <button type="submit" class="submit-btn">Отправить</button>
+                <div class="form-message" id="formMessage"></div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Плавная прокрутка для навигации
+        document.querySelectorAll('nav a, .dropdown-content a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#home' || targetId === '#') {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                } else if (targetId.startsWith('#')) {
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            });
+        });
+
+        // Открытие/закрытие модального окна контактов
+        const contactsModal = document.getElementById('contactsModal');
+        const openContactsBtn = document.getElementById('openContacts');
+        const closeContactsBtn = document.getElementById('closeContacts');
+
+        openContactsBtn.addEventListener('click', () => {
+            contactsModal.style.display = 'flex';
+        });
+
+        closeContactsBtn.addEventListener('click', () => {
+            contactsModal.style.display = 'none';
+        });
+
+        window.addEventListener('click', (e) => {
+            if (e.target === contactsModal) {
+                contactsModal.style.display = 'none';
+            }
+        });
+
+        // Открытие/закрытие модального окна формы
+        const formModal = document.getElementById('formModal');
+        const openFormBtn = document.getElementById('openForm');
+        const closeFormBtn = document.getElementById('closeForm');
+
+        openFormBtn.addEventListener('click', () => {
+            formModal.style.display = 'flex';
+        });
+
+        closeFormBtn.addEventListener('click', () => {
+            formModal.style.display = 'none';
+        });
+
+        window.addEventListener('click', (e) => {
+            if (e.target === formModal) {
+                formModal.style.display = 'none';
+            }
+        });
+
+        // Галерея с прокруткой
+        const gallerySlider = document.getElementById('gallerySlider');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+
+        prevBtn.addEventListener('click', () => {
+            gallerySlider.scrollBy({
+                left: -320,
+                behavior: 'smooth'
+            });
+        });
+
+        nextBtn.addEventListener('click', () => {
+            gallerySlider.scrollBy({
+                left: 320,
+                behavior: 'smooth'
+            });
+        });
+
+        // Отправка формы с использованием fetch
+        const contactForm = document.getElementById('contactForm');
+        const formMessage = document.getElementById('formMessage');
+
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Собираем данные формы
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // В реальном приложении здесь был бы URL сервера
+            const apiUrl = 'https://formcarry.com/s/njSy1SS2Dt6'; // Тестовый URL
+            
+            // Отправляем данные
+            fetch(apiUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => {
+                if (response.ok) {
+                    return response.json();
+                }
+                throw new Error('Ошибка сети');
+            })
+            .then(data => {
+                // Показываем сообщение об успехе
+                formMessage.textContent = 'Ваше сообщение успешно отправлено! Мы свяжемся с вами в ближайшее время.';
+                formMessage.className = 'form-message success';
+                formMessage.style.display = 'block';
+                
+                // Очищаем форму
+                contactForm.reset();
+                
+                // Скрываем сообщение через 5 секунд
+                setTimeout(() => {
+                    formMessage.style.display = 'none';
+                    formModal.style.display = 'none';
+                }, 5000);
+            })
+            .catch(error => {
+                // Показываем сообщение об ошибке
+                formMessage.textContent = 'Произошла ошибка при отправке формы. Пожалуйста, попробуйте еще раз.';
+                formMessage.className = 'form-message error';
+                formMessage.style.display = 'block';
+                
+                // Скрываем сообщение через 5 секунд
+                setTimeout(() => {
+                    formMessage.style.display = 'none';
+                }, 5000);
+            });
+        });
+
+        // Анимация при наведении на карточки товаров
+        const productCards = document.querySelectorAll('.product-card');
+        productCards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-10px)';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0)';
+            });
+        });
+
+        // Кнопки "Купить" без действия
+        const buyButtons = document.querySelectorAll('.buy-btn');
+        buyButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                alert('Функция покупки в разработке. Свяжитесь с нами для оформления заказа.');
+            });
+        });
+    </script>
+</body>
+</html>
